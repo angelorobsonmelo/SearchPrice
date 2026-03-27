@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">SearchPrice</string>
+
+    <!-- Android Auto -->
+    <string name="auto_searching">Buscando \"%1$s\"…</string>
+    <string name="auto_results_title">\"%1$s\" · %2$d resultado(s)</string>
+    <string name="auto_results_truncated">\"%1$s\" · %2$d de %3$d resultado(s)</string>
+    <string name="auto_sort_price">Menor Preço</string>
+    <string name="auto_sort_distance">Mais Perto</string>
+    <string name="auto_empty_title">Sem resultados</string>
+    <string name="auto_empty_message">Nenhum resultado para \"%1$s\".\nTente outros termos.</string>
+    <string name="auto_error_title">Ops!</string>
+    <string name="auto_retry">Tentar novamente</string>
+    <string name="auto_error_fallback">Erro ao buscar produtos. Tente novamente.</string>
+</resources>

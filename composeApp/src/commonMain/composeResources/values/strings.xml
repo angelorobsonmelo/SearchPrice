@@ -1,0 +1,40 @@
+<resources>
+    <!-- App header -->
+    <string name="app_name">Busca Precos</string>
+    <string name="app_subtitle">Compare precos em Maceio/AL</string>
+
+    <!-- Search bar -->
+    <string name="search_placeholder">Nome do produto...</string>
+    <string name="search_button">Buscar</string>
+
+    <!-- Loading -->
+    <string name="loading_message">Buscando precos...</string>
+
+    <!-- Error state -->
+    <string name="error_title">Ops!</string>
+    <string name="error_search_message">Erro ao buscar: %1$s</string>
+    <string name="error_retry_fallback">tente novamente</string>
+    <string name="retry_button">Tentar novamente</string>
+
+    <!-- Empty state -->
+    <string name="empty_results_title">Nenhum resultado</string>
+    <string name="empty_results_message">Tente buscar com outros termos</string>
+
+    <!-- Initial state -->
+    <string name="initial_title">Busque um produto</string>
+    <string name="initial_hint">Ex: leite integral, arroz 5kg, cafe</string>
+
+    <!-- Product card -->
+    <string name="open_in_maps">Abrir no Maps</string>
+    <string name="last_sale_date">Ultima venda: %1$s</string>
+
+    <!-- Sort options -->
+    <string name="sort_by_price">Menor Preco</string>
+    <string name="sort_by_distance">Mais Perto</string>
+
+    <!-- Results count -->
+    <plurals name="results_count">
+        <item quantity="one">%1$d resultado</item>
+        <item quantity="other">%1$d resultados</item>
+    </plurals>
+</resources>

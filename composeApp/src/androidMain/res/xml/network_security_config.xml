@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    Restrict cleartext HTTP traffic to the SEFAZ AL government API only.
+    All other connections must use HTTPS.
+-->
+<network-security-config>
+    <base-config cleartextTrafficPermitted="false" />
+    <domain-config cleartextTrafficPermitted="true">
+        <domain includeSubdomains="false">api.sefaz.al.gov.br</domain>
+    </domain-config>
+</network-security-config>

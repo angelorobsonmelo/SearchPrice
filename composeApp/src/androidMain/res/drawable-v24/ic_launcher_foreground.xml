@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    SearchPrice app icon foreground — 108×108dp, safe zone 18–90dp.
+
+    Design concept: a magnifying glass (search) with a price tag visible
+    through the lens — immediately conveys "price search" at a glance.
+
+    All artwork is white so it works against any background color/gradient
+    and renders correctly as a monochrome themed icon on Android 13+.
+
+    Geometry (viewport 108×108):
+      Lens circle   — center (50, 46), radius 22, stroke 7
+      Price tag     — pentagon centered in lens, max radius ≈ 12.8 from center
+      Hole          — circle r=2.5 at left of tag (punched via evenOdd)
+      Handle        — thick rounded stroke from (66, 63) to (80, 77)
+-->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+
+    <!-- ── Magnifying glass ring ───────────────────────────────────── -->
+    <!-- Full circle via two 180° arcs; center (50,46) r=22, stroke=7 -->
+    <path
+        android:fillColor="#00000000"
+        android:strokeColor="#FFFFFF"
+        android:strokeWidth="7"
+        android:pathData="M28,46 A22,22 0 1,0 72,46 A22,22 0 1,0 28,46" />
+
+    <!-- ── Price tag inside the lens ──────────────────────────────── -->
+    <!--
+        Pentagon tag (arrow pointing right) centred at (50,46).
+        Corners reach r≈12.8 → clear gap from ring inner edge (r≈18.5).
+        evenOdd fill punches the small ring hole at the left side of the tag.
+    -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:fillType="evenOdd"
+        android:pathData="
+            M40,38 L55,38 L60,46 L55,54 L40,54 Z
+            M41.5,46 A2.5,2.5 0 1,0 46.5,46 A2.5,2.5 0 1,0 41.5,46 Z" />
+
+    <!-- ── Handle ──────────────────────────────────────────────────── -->
+    <!-- Rounded capsule at 45°, starts where the ring exits at ≈(66,62) -->
+    <path
+        android:fillColor="#00000000"
+        android:strokeColor="#FFFFFF"
+        android:strokeWidth="8"
+        android:strokeLineCap="round"
+        android:pathData="M66,63 L80,77" />
+
+</vector>

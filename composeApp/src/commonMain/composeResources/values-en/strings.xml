@@ -1,0 +1,40 @@
+<resources>
+    <!-- App header -->
+    <string name="app_name">Price Finder</string>
+    <string name="app_subtitle">Compare prices in Maceio/AL</string>
+
+    <!-- Search bar -->
+    <string name="search_placeholder">Product name...</string>
+    <string name="search_button">Search</string>
+
+    <!-- Loading -->
+    <string name="loading_message">Searching prices...</string>
+
+    <!-- Error state -->
+    <string name="error_title">Oops!</string>
+    <string name="error_search_message">Search error: %1$s</string>
+    <string name="error_retry_fallback">please try again</string>
+    <string name="retry_button">Try again</string>
+
+    <!-- Empty state -->
+    <string name="empty_results_title">No results</string>
+    <string name="empty_results_message">Try searching with different terms</string>
+
+    <!-- Initial state -->
+    <string name="initial_title">Search for a product</string>
+    <string name="initial_hint">E.g.: whole milk, 5kg rice, coffee</string>
+
+    <!-- Product card -->
+    <string name="open_in_maps">Open in Maps</string>
+    <string name="last_sale_date">Last sale: %1$s</string>
+
+    <!-- Sort options -->
+    <string name="sort_by_price">Lowest Price</string>
+    <string name="sort_by_distance">Nearest</string>
+
+    <!-- Results count -->
+    <plurals name="results_count">
+        <item quantity="one">%1$d result</item>
+        <item quantity="other">%1$d results</item>
+    </plurals>
+</resources>
