@@ -41,6 +41,27 @@ import searchprice.composeapp.generated.resources.initial_title
 import searchprice.composeapp.generated.resources.loading_message
 import searchprice.composeapp.generated.resources.retry_button
 
+// ── Spacing ───────────────────────────────────────────────────────────────────
+private val SpacingSmall   = 8.dp
+private val SpacingMedium  = 12.dp
+private val SpacingLarge   = 16.dp
+private val SpacingXLarge  = 24.dp
+private val SpacingXXLarge = 32.dp
+
+// ── Shape ─────────────────────────────────────────────────────────────────────
+private val CornerRadiusCard = 16.dp
+
+// ── List / Grid padding ───────────────────────────────────────────────────────
+private val ListContentPadding = PaddingValues(
+    horizontal = SpacingLarge,
+    vertical   = SpacingSmall
+)
+
+// ── Typography ────────────────────────────────────────────────────────────────
+private val FontSizeBody  = 14.sp
+private val FontSizeTitle = 18.sp
+private val FontSizeError = 20.sp
+
 @Composable
 fun ProductList(
     state: SearchContract.State,
@@ -60,7 +81,7 @@ private fun LoadingContent() {
     Box(Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
         Column(horizontalAlignment = Alignment.CenterHorizontally) {
             CircularProgressIndicator(color = PriceGreen)
-            Spacer(Modifier.height(16.dp))
+            Spacer(Modifier.height(SpacingLarge))
             Text(
                 stringResource(Res.string.loading_message),
                 color = MaterialTheme.colorScheme.onSurfaceVariant
@@ -74,28 +95,28 @@ private fun ErrorContent(message: String, onRetry: () -> Unit) {
     Box(
         Modifier
             .fillMaxSize()
-            .padding(32.dp),
+            .padding(SpacingXXLarge),
         contentAlignment = Alignment.Center
     ) {
         Card(
             colors = CardDefaults.cardColors(containerColor = Color(0xFFFFF3E0)),
-            shape = RoundedCornerShape(16.dp)
+            shape = RoundedCornerShape(CornerRadiusCard)
         ) {
             Column(
-                modifier = Modifier.padding(24.dp),
+                modifier = Modifier.padding(SpacingXLarge),
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
-                Text(stringResource(Res.string.error_title), fontSize = 20.sp, fontWeight = FontWeight.Bold)
-                Spacer(Modifier.height(8.dp))
+                Text(stringResource(Res.string.error_title), fontSize = FontSizeError, fontWeight = FontWeight.Bold)
+                Spacer(Modifier.height(SpacingSmall))
                 Text(
                     stringResource(
                         Res.string.error_search_message,
                         message.ifBlank { stringResource(Res.string.error_retry_fallback) }
                     ),
                     color = MaterialTheme.colorScheme.onSurfaceVariant,
-                    fontSize = 14.sp
+                    fontSize = FontSizeBody
                 )
-                Spacer(Modifier.height(16.dp))
+                Spacer(Modifier.height(SpacingLarge))
                 FilledTonalButton(onClick = onRetry) {
                     Text(stringResource(Res.string.retry_button))
                 }
@@ -109,16 +130,16 @@ private fun EmptyResultsContent() {
     Box(
         Modifier
             .fillMaxSize()
-            .padding(32.dp),
+            .padding(SpacingXXLarge),
         contentAlignment = Alignment.Center
     ) {
         Column(horizontalAlignment = Alignment.CenterHorizontally) {
-            Text(stringResource(Res.string.empty_results_title), fontSize = 18.sp, fontWeight = FontWeight.SemiBold)
-            Spacer(Modifier.height(8.dp))
+            Text(stringResource(Res.string.empty_results_title), fontSize = FontSizeTitle, fontWeight = FontWeight.SemiBold)
+            Spacer(Modifier.height(SpacingSmall))
             Text(
                 stringResource(Res.string.empty_results_message),
                 color = MaterialTheme.colorScheme.onSurfaceVariant,
-                fontSize = 14.sp
+                fontSize = FontSizeBody
             )
         }
     }
@@ -129,21 +150,21 @@ private fun InitialContent() {
     Box(
         Modifier
             .fillMaxSize()
-            .padding(32.dp),
+            .padding(SpacingXXLarge),
         contentAlignment = Alignment.Center
     ) {
         Column(horizontalAlignment = Alignment.CenterHorizontally) {
             Text(
                 stringResource(Res.string.initial_title),
-                fontSize = 18.sp,
+                fontSize = FontSizeTitle,
                 fontWeight = FontWeight.SemiBold,
                 color = MaterialTheme.colorScheme.onSurfaceVariant
             )
-            Spacer(Modifier.height(8.dp))
+            Spacer(Modifier.height(SpacingSmall))
             Text(
                 stringResource(Res.string.initial_hint),
                 color = MaterialTheme.colorScheme.onSurfaceVariant.copy(alpha = 0.6f),
-                fontSize = 14.sp
+                fontSize = FontSizeBody
             )
         }
     }
@@ -154,25 +175,23 @@ private fun ResultsList(state: SearchContract.State) {
     BoxWithConstraints(modifier = Modifier.fillMaxSize()) {
         val windowSize = WindowSize.from(maxWidth)
         val columns = windowSize.gridColumns
-        val padding = PaddingValues(horizontal = 16.dp, vertical = 8.dp)
-        val spacing = 12.dp
 
         if (columns == 1) {
             LazyColumn(
-                contentPadding = padding,
-                verticalArrangement = Arrangement.spacedBy(spacing)
+                contentPadding = ListContentPadding,
+                verticalArrangement = Arrangement.spacedBy(SpacingMedium)
             ) {
                 items(state.products) { product ->
                     ProductItemCard(product = product)
                 }
-                item { Spacer(Modifier.height(spacing)) }
+                item { Spacer(Modifier.height(SpacingMedium)) }
             }
         } else {
             LazyVerticalGrid(
                 columns = GridCells.Fixed(columns),
-                contentPadding = padding,
-                verticalArrangement = Arrangement.spacedBy(spacing),
-                horizontalArrangement = Arrangement.spacedBy(spacing)
+                contentPadding = ListContentPadding,
+                verticalArrangement = Arrangement.spacedBy(SpacingMedium),
+                horizontalArrangement = Arrangement.spacedBy(SpacingMedium)
             ) {
                 items(state.products) { product ->
                     ProductItemCard(product = product)
