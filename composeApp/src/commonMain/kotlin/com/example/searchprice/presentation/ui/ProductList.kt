@@ -2,6 +2,7 @@ package com.example.searchprice.presentation.ui
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.BoxWithConstraints
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Spacer
@@ -10,6 +11,9 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.lazy.grid.GridCells
+import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
+import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
@@ -147,15 +151,36 @@ private fun InitialContent() {
 
 @Composable
 private fun ResultsList(state: SearchContract.State) {
-    LazyColumn(
-        contentPadding = PaddingValues(horizontal = 16.dp, vertical = 8.dp),
-        verticalArrangement = Arrangement.spacedBy(12.dp)
-    ) {
-        items(
-            items = state.products,
-        ) { product ->
-            ProductItemCard(product = product)
+    BoxWithConstraints(modifier = Modifier.fillMaxSize()) {
+        val columns = when {
+            maxWidth >= 900.dp -> 3
+            maxWidth >= 600.dp -> 2
+            else               -> 1
         }
-        item { Spacer(Modifier.height(16.dp)) }
+        val padding = PaddingValues(horizontal = 16.dp, vertical = 8.dp)
+        val spacing = 12.dp
+
+        if (columns == 1) {
+            LazyColumn(
+                contentPadding = padding,
+                verticalArrangement = Arrangement.spacedBy(spacing)
+            ) {
+                items(state.products) { product ->
+                    ProductItemCard(product = product)
+                }
+                item { Spacer(Modifier.height(spacing)) }
+            }
+        } else {
+            LazyVerticalGrid(
+                columns = GridCells.Fixed(columns),
+                contentPadding = padding,
+                verticalArrangement = Arrangement.spacedBy(spacing),
+                horizontalArrangement = Arrangement.spacedBy(spacing)
+            ) {
+                items(state.products) { product ->
+                    ProductItemCard(product = product)
+                }
+            }
+        }
     }
 }
