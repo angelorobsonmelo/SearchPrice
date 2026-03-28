@@ -8,7 +8,7 @@ import androidx.compose.ui.window.application
 fun main() = application {
     val icon = Thread.currentThread()
         .contextClassLoader
-        ?.getResourceAsStream("icons/SearchPrice.icns")
+        ?.getResourceAsStream("icons/icon.png")
         ?.use { BitmapPainter(loadImageBitmap(it)) }
 
     Window(

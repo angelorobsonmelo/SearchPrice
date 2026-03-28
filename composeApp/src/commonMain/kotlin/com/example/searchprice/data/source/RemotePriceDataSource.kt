@@ -35,17 +35,13 @@ class RemotePriceDataSource {
             setBody(TextContent(jsonBody, ContentType.Application.Json))
         }
         val body = httpResponse.bodyAsText()
-        if (body.trimStart().startsWith("[")) {
-            Result.success(json.decodeFromString<List<PriceSearchResponse>>(body))
-        } else {
-            Result.failure(Exception("A API retornou um erro. Tente refinar sua busca."))
-        }
+        Result.success(json.decodeFromString<List<PriceSearchResponse>>(body))
     } catch (e: Exception) {
         Result.failure(e)
     }
 
     companion object {
         private const val BASE_URL =
-            "https://api.sefaz.al.gov.br/sfz_nfce_api/api/public/consultarPrecosPorDescricao"
+            "http://api.sefaz.al.gov.br/sfz_nfce_api/api/public/consultarPrecosPorDescricao"
     }
 }
