@@ -30,7 +30,7 @@ class RemotePriceDataSource {
             longitude = longitude
         )
         val jsonBody = json.encodeToString(PriceSearchRequest.serializer(), request)
-        val httpResponse = client.post(BASE_URL) {
+        val httpResponse = client.post(apiBaseUrl) {
             header("AppToken", BuildConfig.APP_TOKEN)
             setBody(TextContent(jsonBody, ContentType.Application.Json))
         }
@@ -40,8 +40,4 @@ class RemotePriceDataSource {
         Result.failure(e)
     }
 
-    companion object {
-        private const val BASE_URL =
-            "http://api.sefaz.al.gov.br/sfz_nfce_api/api/public/consultarPrecosPorDescricao"
-    }
 }
