@@ -3,8 +3,6 @@ package com.example.searchprice.data.source
 import com.example.searchprice.BuildConfig
 import com.example.searchprice.data.model.PriceSearchRequest
 import com.example.searchprice.data.model.PriceSearchResponse
-import io.ktor.client.*
-import io.ktor.client.plugins.*
 import io.ktor.client.request.*
 import io.ktor.client.statement.*
 import io.ktor.http.*
@@ -19,13 +17,7 @@ class RemotePriceDataSource {
         encodeDefaults = true
     }
 
-    private val client = HttpClient {
-        install(HttpTimeout) {
-            requestTimeoutMillis = 60_000
-            connectTimeoutMillis = 30_000
-            socketTimeoutMillis = 60_000
-        }
-    }
+    private val client = createHttpClient()
 
     suspend fun searchPrices(
         description: String,
