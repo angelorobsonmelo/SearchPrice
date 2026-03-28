@@ -166,8 +166,17 @@ compose.desktop {
 
         nativeDistributions {
             targetFormats(TargetFormat.Dmg, TargetFormat.Msi, TargetFormat.Deb)
-            packageName = "com.example.searchprice"
+            packageName = "SearchPrice"
             packageVersion = "1.0.0"
+            description = "Comparador de preços para consumidores alagoanos"
+            copyright = "© 2026 SearchPrice"
+            vendor = "SearchPrice"
+
+            macOS {
+                bundleID = "br.com.searchprice"
+                packageName = "SearchPrice"
+                iconFile.set(project.file("src/jvmMain/resources/icons/SearchPrice.icns"))
+            }
         }
     }
 }
