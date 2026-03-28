@@ -176,7 +176,7 @@ private fun ResultsList(state: SearchContract.State) {
         val windowSize = WindowSize.from(maxWidth)
         val columns = windowSize.gridColumns
 
-        if (columns == 1) {
+        if (windowSize == WindowSize.Compact) {
             LazyColumn(
                 contentPadding = ListContentPadding,
                 verticalArrangement = Arrangement.spacedBy(SpacingMedium)
