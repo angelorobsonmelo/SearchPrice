@@ -4,7 +4,7 @@ const APP_TOKEN  = "95da6fd760888ae09160bfdf1d8cab5acc307716";
 const CORS_HEADERS = {
   "Access-Control-Allow-Origin":  "*",
   "Access-Control-Allow-Methods": "POST, OPTIONS",
-  "Access-Control-Allow-Headers": "Content-Type",
+  "Access-Control-Allow-Headers": "Content-Type, AppToken",
 };
 
 export default {
