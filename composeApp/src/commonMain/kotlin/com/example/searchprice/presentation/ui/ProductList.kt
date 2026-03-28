@@ -152,11 +152,8 @@ private fun InitialContent() {
 @Composable
 private fun ResultsList(state: SearchContract.State) {
     BoxWithConstraints(modifier = Modifier.fillMaxSize()) {
-        val columns = when {
-            maxWidth >= 900.dp -> 3
-            maxWidth >= 600.dp -> 2
-            else               -> 1
-        }
+        val windowSize = WindowSize.from(maxWidth)
+        val columns = windowSize.gridColumns
         val padding = PaddingValues(horizontal = 16.dp, vertical = 8.dp)
         val spacing = 12.dp
 
